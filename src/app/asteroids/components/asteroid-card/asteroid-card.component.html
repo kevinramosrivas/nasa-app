@@ -1,0 +1,29 @@
+<div class="card animate__animated animate__backInUp">
+    <app-asteroid-image [imagePath]="asteroid.imagePath!"/>
+    <div class="card-body text-center">
+      <h5 class="card-title">{{asteroid.name}}</h5>
+      <app-span-dangerous [isDangerous]="asteroid.is_potentially_hazardous_asteroid"></app-span-dangerous>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p class="font-weight-bold">Fecha de paso</p> 
+          {{asteroid.close_approach_data[0].close_approach_date_full | date:'dd/MM/yyyy h:mm:ss a' }}
+        </li>
+        <li class="list-group-item">
+          <p class="font-weight-bold">Diametro máximo aproximado</p> 
+          {{asteroid.estimated_diameter.meters.estimated_diameter_max | number:'1.0-4' }} m
+        </li>
+        <li class="list-group-item">
+          <p class="font-weight-bold">Velocidad máxima relativa</p> 
+          {{asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour | number:'1.0-1'}} km/h
+        </li>
+      </ul>
+      <div class="text-center mt-3">
+        <a class="btn btn-primary"
+        href="{{asteroid.nasa_jpl_url}}"
+        target="_blank"
+        rel="noopener noreferrer">
+            Ver más
+        </a>
+      </div>
+    </div>
+</div>

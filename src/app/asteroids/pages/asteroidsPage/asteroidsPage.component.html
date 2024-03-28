@@ -1,3 +1,45 @@
-<div class="container">
-    <p>asteroids page works</p>
+<div class="container mt-3">
+    <div class="row d-flex  justify-content-center">
+        <div class="col-12 animate__animated animate__zoomIn">
+            <h1 class="text-center text-bold">
+                Busca asteroides cercanos por fecha
+            </h1>
+            <h2 class="text-center">
+                ¡Explora el espacio hoy!  ☄️
+            </h2>
+        </div>
+    </div>
+        <app-search-bar (eventEmitter)="setAsteroids($event)" (isLoading)="setIsLoading($event)"></app-search-bar>
+    <div class="row mt-4 align-items-center justify-content-center">
+        @if(asteroids.length==0) {
+            @if(!isLoading){
+                <app-message-asteroid
+                [parameters]="{
+                    imagePath: './assets/images/telescope.svg',
+                    message: 'Selecciona una fecha y presiona buscar para ver los asteroides cercanos a la tierra'
+                }"
+                />
+            }
+            @if(hasErrors) {
+                <app-message-asteroid
+                [parameters]="{
+                    imagePath: './assets/images/error.svg',
+                    message: 'Hubo un problema, intenta de nuevo por favor'
+                }"
+                />
+            }
+            @if(isLoading && !hasErrors){
+                <div class="spinner-border text-primary mt-4"  style="width: 10rem; height: 10rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            }
+        }
+        @else {
+            @for (asteroid of asteroids; track asteroid.id) {
+                <div class="col-md-4 col-12 col-sm-6 mb-2">
+                    <app-asteroid-card [asteroid]="asteroid"></app-asteroid-card>
+                </div>       
+            }
+        }
+    </div>
 </div>

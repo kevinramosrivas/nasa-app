@@ -1,9 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" [routerLink]="['/asteroids']">
         <div class="d-flex align-items-center">
               <img [src]="logo_asteroid" alt="logo" width="50" height="50" class="d-inline-block align-text-top mx-1">
-              <span class="mx-1">SpaceRock Tracker</span>
+              <span class="d-block ms-3">
+                <span class="fw-bold">SpaceRock</span>
+                <br>
+                <span>Tracker</span>
+              </span>
+
         </div>
       </a>
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
