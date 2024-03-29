@@ -24,7 +24,7 @@ export class ThemeColorService {
   }
 
   public loadLocalStorage(){
-    if(!localStorage.getItem('theme-color')) return false;
+    if(!localStorage.getItem('theme-color')) return true;
     const color =  localStorage.getItem('theme-color')!;
     this.body.setAttribute('data-bs-theme',color);
     return color=='dark'?true:false;
