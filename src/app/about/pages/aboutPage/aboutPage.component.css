@@ -1,3 +1,30 @@
 :host {
   display: block;
 }
+
+#github:hover{
+  animation: shake 0.5s;
+}
+
+@keyframes shake{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(10deg);
+  }
+  50%{
+    transform: rotate(-10deg);
+  }
+  75%{
+    transform: rotate(10deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
+#a-github{
+  text-decoration: none;
+  color: rgb(72, 113, 248);
+}

@@ -1,0 +1,56 @@
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <div class="col-12">
+            <app-asteroid-image [imagePath]="asteroidInfo?.imagePath!"></app-asteroid-image>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="fw-bold">NEO ID</p>
+                            <p>{{asteroidInfo?.neo_reference_id}}</p>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">Nombre</p>
+                            <p>{{asteroidInfo?.name}}</p>
+                         </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">Magnitud absoluta</p>
+                            <p>{{asteroidInfo?.absolute_magnitude_h | number:'1.0-4'}}</p>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">Velocidad relativa</p>
+                            <p>{{asteroidInfo!.close_approach_data[0].relative_velocity.kilometers_per_hour | number:'1.0-4'}} km/h</p>
+                         </li>
+                      </ul>
+                </div>
+                <div class="col-md-6 col-12">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="fw-bold">Fecha de paso</p>
+                            <p>{{asteroidInfo!.close_approach_data[0].close_approach_date_full | date:'dd/MM/yyyy h:mm:ss a'}}</p>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">Diametro máximo aproximado</p>
+                            <p>{{asteroidInfo?.estimated_diameter?.meters?.estimated_diameter_max | number:'1.0-4'}} m</p>
+                         </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">Diametro mínimo aproximado</p>
+                            <p>{{asteroidInfo?.estimated_diameter?.meters?.estimated_diameter_min | number:'1.0-4'}} m</p>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold">¿Es peligroso?</p>
+                            <app-span-dangerous [isDangerous]="asteroidInfo!.is_potentially_hazardous_asteroid"></app-span-dangerous>
+                         </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center mt-4">
+            <a class="btn btn-primary" href="{{asteroidInfo?.nasa_jpl_url}}">
+                Mas información <img src="../assets/nasa.svg" alt="" width="50rem" height="50rem">
+            </a>
+        </div>
+    </div>
+</div>

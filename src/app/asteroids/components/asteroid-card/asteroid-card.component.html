@@ -19,7 +19,7 @@
       </ul>
       <div class="text-center mt-3">
         <a class="btn btn-primary"
-        href="{{asteroid.nasa_jpl_url}}"
+        [routerLink]="['/asteroids/info-meteorit', asteroid.neo_reference_id]"
         target="_blank"
         rel="noopener noreferrer">
             Ver más

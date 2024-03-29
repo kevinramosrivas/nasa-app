@@ -41,6 +41,18 @@ export class AsteroidsService {
         );
     }
 
+    public getAsteroidById(id: string): Observable<NearEarthObject>{
+        const asteroid = this.cachedAsteroids.find(asteroid => asteroid.id === id);
+        if(asteroid) return of(asteroid);
+        return this.http.get<NearEarthObject>(`${this.baseUrl}/neo/${id}?api_key=${this.key}`)
+        .pipe(
+            catchError(val => {
+                this.errors = true;
+                return of({} as NearEarthObject)
+            })
+        );
+    }
+
     private saveToLocalStorage(asteroids: NearEarthObject[]): void {
         localStorage.setItem('asteroids', JSON.stringify(asteroids));
     }

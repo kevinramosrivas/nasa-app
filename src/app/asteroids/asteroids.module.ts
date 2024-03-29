@@ -11,6 +11,7 @@ import { AsteroidImageComponent } from './components/asteroid-image/asteroid-ima
 import { SpanDangerousComponent } from './components/span-dangerous/span-dangerous.component';
 import { MessageAsteroidComponent } from './components/message-asteroid/message-asteroid.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InfoMeteoritComponent } from './pages/info-meteorit/info-meteorit.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AsteroidImageComponent,
     SpanDangerousComponent,
     MessageAsteroidComponent,
+    InfoMeteoritComponent,
     IsDangerousPipe
   ],
   imports: [

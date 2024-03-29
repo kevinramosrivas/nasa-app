@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './aboutPage.component.html',
   styleUrl: './aboutPage.component.css',
 })
-export class AboutPageComponent { }
+export class AboutPageComponent { 
+
+  public iconsPath: string[] = [
+    './assets/angular.svg',
+    './assets/bootstrap.png',
+    './assets/typescript.svg',
+    './assets/rxjs.svg',
+  ];
+}
