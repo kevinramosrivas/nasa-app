@@ -18,7 +18,7 @@ export class AsteroidsPageComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    //this.asteroids = this.asteroidsService.cachedAsteroids;
+    this.asteroids = this.asteroidsService.cachedAsteroids;
   }
 
   public setAsteroids(asteroids: NearEarthObject[]): void {

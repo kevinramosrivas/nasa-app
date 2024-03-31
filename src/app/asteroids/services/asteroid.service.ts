@@ -13,7 +13,7 @@ export class AsteroidsService {
     public errors: boolean = false;
 
     constructor(private http: HttpClient) { 
-        this.loadFromLocalStorage();
+        this.loadFromSessionStorage();
     }
 
 
@@ -30,7 +30,7 @@ export class AsteroidsService {
             }),
             tap(
                 asteroids =>{
-                    this.saveToLocalStorage(asteroids);
+                    this.saveToSessionStorage(asteroids);
                 }
             ),
             catchError(val => {
@@ -53,13 +53,14 @@ export class AsteroidsService {
         );
     }
 
-    private saveToLocalStorage(asteroids: NearEarthObject[]): void {
-        localStorage.setItem('asteroids', JSON.stringify(asteroids));
+    private saveToSessionStorage(asteroids: NearEarthObject[]): void {
+        sessionStorage.setItem('asteroids', JSON.stringify(asteroids));
+        this.cachedAsteroids = asteroids;
+
     }
 
-    private loadFromLocalStorage(){
-        if(!localStorage.getItem('asteroids')) return;
-
-        this.cachedAsteroids = JSON.parse(localStorage.getItem('asteroids')!);
+    private loadFromSessionStorage(){
+        if(!sessionStorage.getItem('asteroids')) return;
+        this.cachedAsteroids = JSON.parse(sessionStorage.getItem('asteroids')!);
     }
 }
